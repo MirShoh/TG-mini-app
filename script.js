@@ -14,6 +14,12 @@ function showSection(sectionId) {
     });
     document.getElementById(sectionId).classList.add('active');
     document.querySelector(`a[onclick="showSection('${sectionId}')"]`).classList.add('active');
+    toggleSidebar(); // Mobil uchun menyuni yopish
+}
+
+// Sidebar toggle funksiyasi
+function toggleSidebar() {
+    document.querySelector('.sidebar').classList.toggle('active');
 }
 
 // Registratsiya formasi
