@@ -19,6 +19,9 @@
                 <li><a href="#" onclick="showSection('home')" class="active"><span>🏠</span> Bosh sahifa</a></li>
                 <li><a href="#" onclick="showSection('register')"><span>✍️</span> Registratsiya</a></li>
                 <li><a href="#" onclick="showSection('profile')"><span>👤</span> Profil</a></li>
+                <li><a href="#" onclick="showSection('calculator')"><span>🧮</span> Kalkulyator</a></li>
+                <li><a href="#" onclick="showSection('todo')"><span>📝</span> Vazifalar</a></li>
+                <li><a href="#" onclick="showSection('weather')"><span>🌤️</span> Ob-havo</a></li>
             </ul>
             <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
         </div>
@@ -27,7 +30,7 @@
         <div class="main-content">
             <div id="home" class="section active">
                 <h1>Xush kelibsiz!</h1>
-                <p>Bizning zamonaviy ilovamizga xush kelibsiz! Ro‘yxatdan o‘ting va boshlang.</p>
+                <p>Zamonaviy va foydali ilovamizga xush kelibsiz! Funksiyalarni sinab ko‘ring.</p>
                 <div class="hero-anim">
                     <div class="circle"></div>
                     <div class="circle"></div>
@@ -48,6 +51,47 @@
                 <h1>Profil</h1>
                 <div class="profile-card">
                     <p id="userInfo">Ma'lumotlar hali yo'q.</p>
+                </div>
+            </div>
+            <div id="calculator" class="section">
+                <h1>Kalkulyator</h1>
+                <div class="calculator">
+                    <input type="text" id="calcResult" readonly>
+                    <div class="calc-buttons">
+                        <button onclick="addToCalc('1')">1</button>
+                        <button onclick="addToCalc('2')">2</button>
+                        <button onclick="addToCalc('3')">3</button>
+                        <button onclick="addToCalc('+')">+</button>
+                        <button onclick="addToCalc('4')">4</button>
+                        <button onclick="addToCalc('5')">5</button>
+                        <button onclick="addToCalc('6')">6</button>
+                        <button onclick="addToCalc('-')">-</button>
+                        <button onclick="addToCalc('7')">7</button>
+                        <button onclick="addToCalc('8')">8</button>
+                        <button onclick="addToCalc('9')">9</button>
+                        <button onclick="addToCalc('*')">*</button>
+                        <button onclick="addToCalc('0')">0</button>
+                        <button onclick="addToCalc('.')">.</button>
+                        <button onclick="addToCalc('/')">/</button>
+                        <button onclick="calculate()">=</button>
+                        <button onclick="clearCalc()" class="clear">C</button>
+                    </div>
+                </div>
+            </div>
+            <div id="todo" class="section">
+                <h1>Vazifalar</h1>
+                <div class="todo-container">
+                    <input type="text" id="todoInput" placeholder="Yangi vazifa">
+                    <button onclick="addTodo()" class="btn">Qo‘shish</button>
+                    <ul id="todoList"></ul>
+                </div>
+            </div>
+            <div id="weather" class="section">
+                <h1>Ob-havo</h1>
+                <div class="weather-container">
+                    <input type="text" id="cityInput" placeholder="Shahar nomini kiriting">
+                    <button onclick="getWeather()" class="btn">Tekshirish</button>
+                    <p id="weatherResult"></p>
                 </div>
             </div>
         </div>
