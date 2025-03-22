@@ -11,11 +11,13 @@
     <div class="container">
         <!-- Chap menyusi -->
         <div class="sidebar">
-            <h2>Menyu</h2>
+            <div class="logo">
+                <h2>MyApp</h2>
+            </div>
             <ul>
-                <li><a href="#" onclick="showSection('home')">Bosh sahifa</a></li>
-                <li><a href="#" onclick="showSection('register')">Registratsiya</a></li>
-                <li><a href="#" onclick="showSection('profile')">Profil</a></li>
+                <li><a href="#" onclick="showSection('home')" class="active">🏠 Bosh sahifa</a></li>
+                <li><a href="#" onclick="showSection('register')">✍️ Registratsiya</a></li>
+                <li><a href="#" onclick="showSection('profile')">👤 Profil</a></li>
             </ul>
         </div>
 
@@ -23,20 +25,25 @@
         <div class="main-content">
             <div id="home" class="section active">
                 <h1>Xush kelibsiz!</h1>
-                <p>Registratsiyadan o'tish uchun menyudan foydalaning.</p>
+                <p>Bizning ilovamizga xush kelibsiz. Ro‘yxatdan o‘tish uchun menyudan foydalaning.</p>
+                <div class="wave"></div>
             </div>
             <div id="register" class="section">
                 <h1>Registratsiya</h1>
                 <form id="regForm">
-                    <label for="name">Ismingiz:</label>
-                    <input type="text" id="name" required>
-                    <button type="submit">Tasdiqlash</button>
+                    <div class="input-group">
+                        <label for="name">Ismingiz</label>
+                        <input type="text" id="name" placeholder="Ismingizni kiriting" required>
+                    </div>
+                    <button type="submit" class="btn">Tasdiqlash</button>
                 </form>
-                <p id="regStatus"></p>
+                <p id="regStatus" class="status"></p>
             </div>
             <div id="profile" class="section">
                 <h1>Profil</h1>
-                <p id="userInfo">Ma'lumotlar hali yo'q.</p>
+                <div class="profile-card">
+                    <p id="userInfo">Ma'lumotlar hali yo'q.</p>
+                </div>
             </div>
         </div>
     </div>
