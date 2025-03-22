@@ -14,7 +14,6 @@ function showSection(sectionId) {
     });
     document.getElementById(sectionId).classList.add('active');
     document.querySelector(`a[onclick="showSection('${sectionId}')"]`).classList.add('active');
-    toggleSidebar(); // Mobil uchun menyuni yopish
 }
 
 // Sidebar toggle funksiyasi
@@ -27,16 +26,78 @@ document.getElementById('regForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const name = document.getElementById('name').value;
     userData.name = name;
-
-    // Telegram orqali ma'lumotni yuborish
     window.Telegram.WebApp.sendData(JSON.stringify(userData));
-    
-    // Statusni yangilash
     document.getElementById('regStatus').textContent = 'Registratsiya tasdiqlandi!';
-    
-    // Profilni yangilash
     document.getElementById('userInfo').textContent = `Ism: ${userData.name}`;
 });
 
+// Kalkulyator funksiyalari
+let calcExpression = '';
+function addToCalc(value) {
+    calcExpression += value;
+    document.getElementById('calcResult').value = calcExpression;
+}
+
+function calculate() {
+    try {
+        calcExpression = eval(calcExpression).toString();
+        document.getElementById('calcResult').value = calcExpression;
+    } catch (e) {
+        document.getElementById('calcResult').value = 'Xato';
+    }
+}
+
+function clearCalc() {
+    calcExpression = '';
+    document.getElementById('calcResult').value = '';
+}
+
+// Vazifalar funksiyalari
+function addTodo() {
+    const todoInput = document.getElementById('todoInput');
+    const todoText = todoInput.value.trim();
+    if (todoText) {
+        const li = document.createElement('li');
+        li.innerHTML = `${todoText} <button onclick="this.parentElement.remove()">O‘chirish</button>`;
+        document.getElementById('todoList').appendChild(li);
+        todoInput.value = '';
+    }
+}
+
+// Ob-havo funksiyasi
+async function getWeather() {
+    const city = document.getElementById('cityInput').value.trim();
+    if (!city) {
+        document.getElementById('weatherResult').textContent = 'Shahar nomini kiriting!';
+        return;
+    }
+    try {
+        const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY'; // OpenWeatherMap API kalitini qo‘shing
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
+        const data = await response.json();
+        if (data.cod === 200) {
+            document.getElementById('weatherResult').textContent = `${data.name}: ${data.main.temp}°C, ${data.weather[0].description}`;
+        } else {
+            document.getElementById('weatherResult').textContent = 'Shahar topilmadi!';
+        }
+    } catch (e) {
+        document.getElementById('weatherResult').textContent = 'Xatolik yuz berdi!';
+    }
+}
+
+// Motivatsion iqtiboslar
+const quotes = [
+    "Muvaffaqiyat — bu har kuni kichik qadamlar bilan keladi.",
+    "Orzularingga yetish uchun hozirdan boshla!",
+    "Har bir muammo — yangi imkoniyatdir.",
+    "Sabr va mehnat bilan hamma narsa mumkin."
+];
+
+function getRandomQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    document.getElementById('quoteText').textContent = quotes[randomIndex];
+}
+
 // Dastlabki bo'limni ko'rsatish
 showSection('home');
+getRandomQuote(); // Birinchi iqtibosni yuklash
