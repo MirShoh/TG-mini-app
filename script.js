@@ -9,7 +9,11 @@ function showSection(sectionId) {
     document.querySelectorAll('.section').forEach(section => {
         section.classList.remove('active');
     });
+    document.querySelectorAll('.sidebar a').forEach(a => {
+        a.classList.remove('active');
+    });
     document.getElementById(sectionId).classList.add('active');
+    document.querySelector(`a[onclick="showSection('${sectionId}')"]`).classList.add('active');
 }
 
 // Registratsiya formasi
