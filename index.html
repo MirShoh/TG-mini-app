@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telegram Mini App</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
@@ -15,25 +16,29 @@
                 <h2>MyApp</h2>
             </div>
             <ul>
-                <li><a href="#" onclick="showSection('home')" class="active">🏠 Bosh sahifa</a></li>
-                <li><a href="#" onclick="showSection('register')">✍️ Registratsiya</a></li>
-                <li><a href="#" onclick="showSection('profile')">👤 Profil</a></li>
+                <li><a href="#" onclick="showSection('home')" class="active"><span>🏠</span> Bosh sahifa</a></li>
+                <li><a href="#" onclick="showSection('register')"><span>✍️</span> Registratsiya</a></li>
+                <li><a href="#" onclick="showSection('profile')"><span>👤</span> Profil</a></li>
             </ul>
+            <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
         </div>
 
         <!-- Asosiy kontent -->
         <div class="main-content">
             <div id="home" class="section active">
                 <h1>Xush kelibsiz!</h1>
-                <p>Bizning ilovamizga xush kelibsiz. Ro‘yxatdan o‘tish uchun menyudan foydalaning.</p>
-                <div class="wave"></div>
+                <p>Bizning zamonaviy ilovamizga xush kelibsiz! Ro‘yxatdan o‘ting va boshlang.</p>
+                <div class="hero-anim">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
             </div>
             <div id="register" class="section">
                 <h1>Registratsiya</h1>
                 <form id="regForm">
                     <div class="input-group">
-                        <label for="name">Ismingiz</label>
-                        <input type="text" id="name" placeholder="Ismingizni kiriting" required>
+                        <input type="text" id="name" placeholder="Ismingiz" required>
                     </div>
                     <button type="submit" class="btn">Tasdiqlash</button>
                 </form>
