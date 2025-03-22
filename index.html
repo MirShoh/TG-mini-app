@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Mini App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Chap menyusi -->
+        <div class="sidebar">
+            <h2>Menyu</h2>
+            <ul>
+                <li><a href="#" onclick="showSection('home')">Bosh sahifa</a></li>
+                <li><a href="#" onclick="showSection('register')">Registratsiya</a></li>
+                <li><a href="#" onclick="showSection('profile')">Profil</a></li>
+            </ul>
+        </div>
+
+        <!-- Asosiy kontent -->
+        <div class="main-content">
+            <div id="home" class="section active">
+                <h1>Xush kelibsiz!</h1>
+                <p>Registratsiyadan o'tish uchun menyudan foydalaning.</p>
+            </div>
+            <div id="register" class="section">
+                <h1>Registratsiya</h1>
+                <form id="regForm">
+                    <label for="name">Ismingiz:</label>
+                    <input type="text" id="name" required>
+                    <button type="submit">Tasdiqlash</button>
+                </form>
+                <p id="regStatus"></p>
+            </div>
+            <div id="profile" class="section">
+                <h1>Profil</h1>
+                <p id="userInfo">Ma'lumotlar hali yo'q.</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
