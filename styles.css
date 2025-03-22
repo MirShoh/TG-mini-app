@@ -1,32 +1,47 @@
-body {
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    height: 100vh;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f0f4f8;
+    color: #333;
     overflow: hidden;
+    height: 100vh;
 }
 
 .container {
     display: flex;
     width: 100%;
+    height: 100%;
 }
 
 .sidebar {
-    width: 200px;
-    background-color: #2c3e50;
+    width: 80px;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
     color: white;
-    padding: 20px;
-    height: 100vh;
+    padding: 20px 10px;
+    height: 100%;
     position: fixed;
+    transition: width 0.3s ease;
+    z-index: 10;
 }
 
-.sidebar h2 {
-    margin-top: 0;
+.sidebar:hover {
+    width: 200px;
+}
+
+.logo h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff;
 }
 
 .sidebar ul {
     list-style: none;
-    padding: 0;
 }
 
 .sidebar ul li {
@@ -34,48 +49,132 @@ body {
 }
 
 .sidebar a {
-    color: white;
+    color: #fff;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background 0.3s;
 }
 
-.sidebar a:hover {
-    text-decoration: underline;
+.sidebar a:hover, .sidebar a.active {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .main-content {
-    margin-left: 220px;
+    margin-left: 80px;
     padding: 20px;
     flex-grow: 1;
     overflow-y: auto;
+    background: #fff;
+    border-radius: 10px 0 0 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .section {
     display: none;
+    animation: fadeIn 0.5s ease;
 }
 
 .section.active {
     display: block;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 300px;
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #2a5298;
 }
 
-input, button {
-    padding: 10px;
+p {
     font-size: 16px;
+    line-height: 1.5;
 }
 
-button {
-    background-color: #3498db;
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+input:focus {
+    border-color: #2a5298;
+    outline: none;
+}
+
+.btn {
+    background: #2a5298;
     color: white;
+    padding: 12px;
     border: none;
+    border-radius: 8px;
+    font-size: 16px;
     cursor: pointer;
+    transition: background 0.3s;
 }
 
-button:hover {
-    background-color: #2980b9;
+.btn:hover {
+    background: #1e3c72;
+}
+
+.status {
+    margin-top: 10px;
+    color: #27ae60;
+}
+
+.profile-card {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Animatsiya */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* To'lqin effekti */
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%232a5298' fill-opacity='0.1' d='M0,192L48,186.7C96,181,192,171,288,176C384,181,480,203,576,192C672,181,768,139,864,122.7C960,107,1056,117,1152,138.7C1248,160,1344,192,1392,208L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+    background-size: cover;
+}
+
+/* Telefon uchun moslash */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 60px;
+    }
+    .sidebar:hover {
+        width: 150px;
+    }
+    .main-content {
+        margin-left: 60px;
+    }
+    h1 {
+        font-size: 20px;
+    }
+    p {
+        font-size: 14px;
+    }
 }
